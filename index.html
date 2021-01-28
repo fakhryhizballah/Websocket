@@ -8,15 +8,15 @@
 <body>
     data
     <code id="daata"></code>
-    <!-- <code id="data"></code> -->
+    <code id="data"></code>
 </body>
 <script>
-    const ws = new WebSocket("ws://localhost:3000")
+    const ws = new WebSocket("ws://192.168.1.29:3000")
 
     ws.onmessage = (data) => {
         console.log(data);
         document.getElementById("daata").innerText = JSON.parse(data.data).air
-        // document.getElementById("data").innerText = JSON.parse(data.data).waktu
+        document.getElementById("data").innerText = JSON.parse(data.data).waktu
     };
     document.getElementById
 
