@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    data
+    <code id="daata"></code>
+    <!-- <code id="data"></code> -->
+</body>
+<script>
+    const ws = new WebSocket("ws://localhost:3000")
+
+    ws.onmessage = (data) => {
+        console.log(data);
+        document.getElementById("daata").innerText = JSON.parse(data.data).air
+        // document.getElementById("data").innerText = JSON.parse(data.data).waktu
+    };
+    document.getElementById
+
+    function pesan(){
+        ws.send({
+
+        })
+    }
+</script>
+</html>
