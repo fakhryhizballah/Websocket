@@ -9,9 +9,20 @@
     data
     <code id="daata"></code>
     <code id="data"></code>
+
+    <div id="form-message" class="mt-1">
+        <div class="row">
+            <div class="col-8">
+                <input class="form-control" id="message">
+            </div>
+            <div class="col-4">
+                <button class="btn btn-primary" id="sendMessage">Kirim Pesan</button>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
-    const ws = new WebSocket("ws://192.168.1.29:3000")
+    const ws = new WebSocket("ws://192.168.137.1:3000")
 
     ws.onmessage = (data) => {
         console.log(data);
@@ -20,10 +31,17 @@
     };
     document.getElementById
 
-    function pesan(){
-        ws.send({
+   
 
-        })
-    }
+    // function pesan(){
+    //     $("#sendMessage").click(() => {
+    //     ws.send('message', {
+    //         text: $("#message").val()
+    //         })
+    //     })
+    // }
+</script>
+<script>
+  
 </script>
 </html>
