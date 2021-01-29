@@ -6,24 +6,41 @@
     <title>Document</title>
 </head>
 <body>
-
+    <code id="data"></code> <code>user Online</code>
+    <br>
+    <code id="data1"></code> <code>user Online</code>
+    <button id="tombol">Ping</button>
 </body>
 <script>
-    const ws = new WebSocket("ws://192.168.137.1:3000")
+    const ws = new WebSocket("ws://localhost:3000")
 
-  ws.addEventListener("open", () => {
+  ws.addEventListener("open", function open()  {
       console.log("Terhubung");
       ws.send("hi server");
   });
+  ws.addEventListener('message', function incoming(data) {
+  console.log(data);
+  document.getElementById("data1").innerText = JSON.parse(data.data).user
+});
 
 //   ws.addEventListener("message", e =>{
 //       console.log(e);
+//     });
+    
+//     ws.addEventListener("message", ({data}) =>{
+//         console.log(data);
+//         document.getElementById("data").innerText = JSON.parse(data).user
 //   });
 
-  ws.addEventListener("message", ({data}) =>{
-      console.log(data);
-  });
+    document.getElementById("tombol"),addEventListener('click',function() {
+      ws.emit('pesan',{
+          pea: 'haha'
+      });
+    });
 
+    ws.addEventListener('pesan',function(data){
+        document.getElementById("data").innerText = data.user;
+    })
 </script>
 <script>
   

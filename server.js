@@ -4,7 +4,6 @@ const WebSocket = require('ws');
 const ws = new WebSocket.Server({port:3000})
 
 
-let data_dari_stasiun= {}
 let countUserOnline = 0
 ws.on("connection", client => {
 
@@ -15,17 +14,45 @@ ws.on("connection", client => {
     console.log("new connections")
     countUserOnline++;
     console.log("User Online", countUserOnline);
+    const data1 = {
+        user: countUserOnline,
+        waktu:(new Date()).getTime(),
+   };
+   client.send(JSON.stringify(data1));
+
 
     client.on("close",() => {
         console.log("disconnect", countUserOnline);
         countUserOnline--;
         console.log("User Online", countUserOnline);
+        const data1 = {
+                 user: countUserOnline,
+                 waktu:(new Date()).getTime(),
+            }
+        client.send(JSON.stringify(data1))
     });
 
     client.on("message", data => {
        console.log('Pesan dari user :', data);
-       client.send("welcome");
+    //    client.send(data);
+        //  const data1 = {
+        //     user: countUserOnline,
+        //     waktu:(new Date()).getTime(),
+        // }
+        // client.send(JSON.stringify(data1))
+    
+    });
+    client.on('pesan',function incoming(data){
+        console.log(data1);
+        ws.client.emit('pesan',data)
     });
 
-
+    // setInterval(function updateSelalu(){
+    
+    //     const data1 = {
+    //         user: countUserOnline,
+    //         waktu:(new Date()).getTime(),
+    //     }
+    //     client.send(JSON.stringify(data1))
+    // },1000)
 })
