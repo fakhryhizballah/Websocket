@@ -6,7 +6,7 @@ const ws = new WebSocket.Server({port:3000})
 
 let data_dari_stasiun= {}
 let countUserOnline = 0
-ws.on("connection", function incoming(client, req){
+ws.on("connection", client => {
 
     // client.on("message",function incoming(message){
     //     console.log(message)
@@ -20,11 +20,12 @@ ws.on("connection", function incoming(client, req){
         console.log("disconnect", countUserOnline);
         countUserOnline--;
         console.log("User Online", countUserOnline);
-    })
+    });
 
-    client.on("message",function incoming(message){
-       
-    })
+    client.on("message", data => {
+       console.log('Pesan dari user :', data);
+       client.send("welcome");
+    });
 
 
 })

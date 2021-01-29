@@ -11,7 +11,18 @@
 <script>
     const ws = new WebSocket("ws://192.168.137.1:3000")
 
-  
+  ws.addEventListener("open", () => {
+      console.log("Terhubung");
+      ws.send("hi server");
+  });
+
+//   ws.addEventListener("message", e =>{
+//       console.log(e);
+//   });
+
+  ws.addEventListener("message", ({data}) =>{
+      console.log(data);
+  });
 
 </script>
 <script>
