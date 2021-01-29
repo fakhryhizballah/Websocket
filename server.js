@@ -23,22 +23,8 @@ ws.on("connection", function incoming(client, req){
     })
 
     client.on("message",function incoming(message){
-        const data = JSON.parse(message)
-        data_dari_stasiun = data
-
-        // fetch("", {
-        //     method: "POST"
-        // }).then()
-
-        console.log(req.socket.remoteAddress  , data)
-        // console.log(req.socket.remoteAddress  , message)
-        client.send("data diterima")
-        client.send(JSON.stringify(data_dari_stasiun))
+       
     })
-
-    setInterval(function updateKeClient(){
-        client.send(JSON.stringify(data_dari_stasiun))
-    },1000)
 
 
 })
