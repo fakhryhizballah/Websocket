@@ -1,6 +1,4 @@
 const WebSocket = require('ws');
-
-// const fetch = require("node-fetch")
 const ws = new WebSocket.Server({port:3000})
 
 
