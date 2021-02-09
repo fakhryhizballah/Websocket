@@ -19,6 +19,7 @@ ws.on("connection", client => {
         waktu:(new Date()).getTime(),
    };
    client.send(JSON.stringify(data1));
+//    client.send(data1);
 
 
     client.on("close",() => {
@@ -29,23 +30,24 @@ ws.on("connection", client => {
                  user: countUserOnline,
                  waktu:(new Date()).getTime(),
             }
-        client.send(JSON.stringify(data1))
+        client.send(JSON.stringify(data1));
     });
 
-    client.on("message", data => {
-       console.log('Pesan dari user :', data);
+    // client.on("message", data => {
+    //    console.log(data);
     //    client.send(data);
-        //  const data1 = {
-        //     user: countUserOnline,
-        //     waktu:(new Date()).getTime(),
-        // }
-        // client.send(JSON.stringify(data1))
+    //      const data1 = {
+    //         user: countUserOnline,
+    //         waktu:(new Date()).getTime(),
+    //     }
+    //     client.send(JSON.stringify(data1));
     
-    });
-    client.on('pesan',function incoming(data){
-        console.log(data1);
-        ws.client.emit('pesan',data)
-    });
+    // });
+
+    // client.on('pesan',function incoming(data){
+    //     console.log(data1);
+    //     ws.client.emit('pesan',data)
+    // });
 
     // setInterval(function updateSelalu(){
     

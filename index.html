@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <code id="data"></code> <code>user Online</code>
+    <div id="data"></div> <code>user Online</code>
     <br>
     <code id="data1"></code> <code>user Online</code>
     <button id="tombol">Ping</button>
@@ -21,6 +21,11 @@
   ws.addEventListener('message', function incoming(data) {
   console.log(data);
   document.getElementById("data1").innerText = JSON.parse(data.data).user
+//   document.getElementById("data").innerText = JSON.parse(data.short).user
+});
+  ws.addEventListener('message', function incoming(short) {
+  console.log(short);
+//   document.getElementById("data").innerText = JSON.parse(data.short).user
 });
 
 //   ws.addEventListener("message", e =>{
