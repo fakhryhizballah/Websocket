@@ -12,6 +12,7 @@ wss.on("connection", function incoming(ws, req){
     countUserOnline++;
     console.log("User Online", countUserOnline);
 
+
     ws.on("close",() => {
         console.log("disconnect", countUserOnline);
         countUserOnline--;
@@ -22,9 +23,8 @@ wss.on("connection", function incoming(ws, req){
      
         const data = JSON.parse(message)
         data_dari_stasiun = data;
-
         console.log(req.socket.remoteAddress  , data)
-        ws.send("data diterima")
+        ws.send("data diterima");
         ws.send(JSON.stringify(data_dari_stasiun))
 
     });
